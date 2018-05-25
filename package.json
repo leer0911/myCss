@@ -1,5 +1,4 @@
 {
-
   "name": "css-secrets",
   "version": "0.0.1",
   "main": "index.js",
@@ -12,5 +11,9 @@
   },
   "author": "le",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
+  }
 }
