@@ -58,7 +58,7 @@ module.exports = {
   ],
   serviceWorker: true,
   themeConfig: {
-    repo: 'leer0911/css-secrets',
+    repo: 'leer0911/myCss',
     editLinks: true,
     docsDir: 'docs',
     nav,
