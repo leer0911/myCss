@@ -1,0 +1,136 @@
+<template>
+  <div class="layout-3">
+    <ul class="palette">
+      <li>
+        <div class="color-options">
+          <a class="add"
+            href="#">Add</a>
+          <a class="delete"
+            href="#">Delete</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style lang="scss">
+.layout-3 {
+  /**
+ * Styling by sibling count: Color palette example
+ */
+
+  /* Hide "color" 4 items or more */
+  .palette li:first-child:nth-last-child(n + 4) .color-options a:after,
+  .palette li:first-child:nth-last-child(n + 4) ~ li .color-options a:after {
+    content: none;
+  }
+
+  /* Hide word when 6 items or more */
+  .palette li:first-child:nth-last-child(n + 6) .color-options a,
+  .palette li:first-child:nth-last-child(n + 6) ~ li .color-options a {
+    color: transparent;
+    font-size: 0;
+  }
+
+  .palette li:only-child .delete {
+    display: none;
+  }
+
+  /* From this point it’s just styling */
+  .palette {
+    display: flex;
+    height: 200px;
+    max-width: 900px;
+    font: bold 90%/1 sans-serif;
+  }
+
+  .palette li {
+    flex: 1;
+    list-style: none;
+    background: #d6e055;
+  }
+
+  .color-options {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 0 10px;
+    overflow: hidden;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .color-options .add {
+    float: left;
+  }
+  .color-options .delete {
+    float: right;
+  }
+
+  .color-options a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .color-options a:before {
+    display: inline-block;
+    font-size: 1rem;
+    width: 1.3rem;
+    margin-right: 0.3rem;
+    text-align: center;
+    line-height: 1.3;
+    background: white;
+    border-radius: 50%;
+    letter-spacing: normal;
+  }
+
+  .color-options .add:before {
+    content: '✚';
+    color: #590;
+  }
+
+  .color-options .delete:before {
+    content: '✖';
+    color: #b00;
+  }
+
+  .color-options a:after {
+    content: ' color';
+    font-weight: normal;
+  }
+}
+</style>
+
+<script>
+export default {
+  mounted(){
+    function $$(expr, con) { return [].slice.call((con || document).querySelectorAll(expr)); }
+    var colors = [
+      '#D6E055', // Agave
+      '#082323', '#E6E2AF', '#A7A37E', '#EFECCA', '#046380', // Sandy stone beach
+        '#1C171D', '#FEE169', '#CDD452', '#F9722E', '#C9313D', // Sushi Maki
+        '#2E95A3', '#50B8B4', '#C6FFFA', '#E2FFA8'  // Agave
+      ],
+      palette = document.querySelector('.palette'),
+      template = palette.firstElementChild;
+      
+    function addColor(template) {
+      var li = template.cloneNode(true);
+      var color = colors.pop();
+      colors.unshift(color);
+      li.style.background = color;
+      palette.insertBefore(li, template.nextSibling);
+    }
+
+    palette.onclick = function(evt) {
+      var button = evt.target;
+      
+      if (button.className == 'add') {
+        addColor(button.parentNode.parentNode);
+      }
+      else if (button.className == 'delete') {
+        var li = button.parentNode.parentNode;
+        li.parentNode.removeChild(li);
+      }
+    }
+  }
+}
+</script>
