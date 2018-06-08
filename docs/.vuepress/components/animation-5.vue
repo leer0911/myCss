@@ -1,0 +1,29 @@
+<template>
+  <div class="animation-5">
+    <div class="panoramic"></div>
+  </div>
+</template>
+
+<style lang="scss">
+.animation-5 {
+  @keyframes panoramic {
+    to {
+      background-position: 100% 0;
+    }
+  }
+
+  .panoramic {
+    width: 150px;
+    height: 150px;
+    background: url('http://c3.staticflickr.com/3/2671/3904743709_74bc76d5ac_b.jpg');
+    background-size: auto 100%;
+    animation: panoramic 10s linear infinite alternate;
+    animation-play-state: paused;
+  }
+
+  .panoramic:hover,
+  .panoramic:focus {
+    animation-play-state: running;
+  }
+}
+</style>
