@@ -106,14 +106,19 @@ btn.onmousemove = function(e) {
 
 <script>
 ;(function () {
-  var btn = document.querySelector('.snippet-demo__mouse-cursor-gradient-tracking')
-  btn.onmousemove = function (e) {
-    var x = e.pageX - btn.offsetLeft - btn.offsetParent.offsetLeft
-    var y = e.pageY - btn.offsetTop - btn.offsetParent.offsetTop
-    btn.style.setProperty('--x', x + 'px')
-    btn.style.setProperty('--y', y + 'px')
-  }
+
 })()
+export default {
+  mounted () {
+    var btn = document.querySelector('.snippet-demo__mouse-cursor-gradient-tracking')
+    btn.onmousemove = function (e) {
+      var x = e.pageX - btn.offsetLeft - btn.offsetParent.offsetLeft
+      var y = e.pageY - btn.offsetTop - btn.offsetParent.offsetTop
+      btn.style.setProperty('--x', x + 'px')
+      btn.style.setProperty('--y', y + 'px')
+    }
+  }
+}
 </script>
 
 ## Explanation

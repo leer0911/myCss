@@ -76,7 +76,11 @@
 </style>
 
 <script>
-document.querySelector('.snippet-demo__overflow-scroll-gradient__scroller').innerHTML = 'content '.repeat(100)
+export default {
+  mounted () {
+   document.querySelector('.snippet-demo__overflow-scroll-gradient__scroller').innerHTML = 'content '.repeat(100)
+  }
+}
 </script>
 
 ## Explanation
